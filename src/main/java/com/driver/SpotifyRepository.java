@@ -320,11 +320,11 @@ public class SpotifyRepository {
         return songName;
     }
 
-    public List<Album> getAllALbum() {
-        return albums;
-    }
-
-    public List<User> getAllUser() {
-        return users;
-    }
+//    public List<Album> getAllALbum() {
+//        return albums;
+//    }
+//
+//    public List<User> getAllUser() {
+//        return users;
+//    }
 }

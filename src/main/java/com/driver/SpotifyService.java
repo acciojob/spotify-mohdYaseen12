@@ -28,45 +28,45 @@ public class SpotifyService {
     }
 
     public Song createSong(String title, String albumName, int length) throws Exception {
-        List<Album> albumList = spotifyRepository.getAllALbum();
-        for(Album album : albumList){
-            if(!album.getTitle().equals(albumName)){
-                throw new Exception("Album does not exist");
-            }
-        }
-        Song song = spotifyRepository.createSong(title,albumName,length);
-        return song;
+//        List<Album> albumList = spotifyRepository.getAllALbum();
+//        for(Album album : albumList){
+//            if(!album.getTitle().equals(albumName)){
+//                throw new Exception("Album does not exist");
+//            }
+//        }
+        return spotifyRepository.createSong(title,albumName,length);
+
     }
 
     public Playlist createPlaylistOnLength(String mobile, String title, int length) throws Exception {
-        List<User> userList = spotifyRepository.getAllUser();
-        for(User user : userList){
-            if(!user.getMobile().equals(mobile))
-                throw new Exception("User does not exist");
-        }
-        Playlist playlist = spotifyRepository.createPlaylistOnLength(mobile, title, length);
-        return playlist;
+//        List<User> userList = spotifyRepository.getAllUser();
+//        for(User user : userList){
+//            if(!user.getMobile().equals(mobile))
+//                throw new Exception("User does not exist");
+//        }
+        return spotifyRepository.createPlaylistOnLength(mobile, title, length);
+
     }
 
 
     public Playlist createPlaylistOnName(String mobile, String title, List<String> songTitles) throws Exception {
-        List<User> userList = spotifyRepository.getAllUser();
-        for(User user : userList){
-            if(!user.getMobile().equals(mobile))
-                throw new Exception("User does not exist");
-        }
-        Playlist playlist = spotifyRepository.createPlaylistOnName(mobile, title, songTitles);
-        return playlist;
+//        List<User> userList = spotifyRepository.getAllUser();
+//        for(User user : userList){
+//            if(!user.getMobile().equals(mobile))
+//                throw new Exception("User does not exist");
+//        }
+       return spotifyRepository.createPlaylistOnName(mobile, title, songTitles);
+//        return playlist;
     }
 
     public Playlist findPlaylist(String mobile, String playlistTitle) throws Exception {
-       Playlist playlist = spotifyRepository.findPlaylist(mobile, playlistTitle);
-       return playlist;
+       return spotifyRepository.findPlaylist(mobile, playlistTitle);
+//       return playlist;
     }
 
     public Song likeSong(String mobile, String songTitle) throws Exception {
-        Song song = spotifyRepository.likeSong(mobile, songTitle);
-        return song;
+        return spotifyRepository.likeSong(mobile, songTitle);
+//        return song;
     }
 
     public String mostPopularArtist() {
