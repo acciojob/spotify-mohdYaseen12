@@ -58,7 +58,7 @@ public class SpotifyController {
             Playlist playlist = spotifyService.createPlaylistOnLength(mobile,title,length);
         }
         catch (Exception e){
-            return e.toString();
+            return e.getMessage();
         }
 
         return "Success";
@@ -74,7 +74,7 @@ public class SpotifyController {
            Playlist playlist = spotifyService.createPlaylistOnName(mobile, title, songTitles);
         }
         catch (Exception e){
-            return e.toString();
+            return e.getMessage();
         }
         return "Success";
     }
@@ -90,7 +90,7 @@ public class SpotifyController {
             Playlist playlist = spotifyService.findPlaylist(mobile, playlistTitle);
         }
         catch (Exception e){
-            return e.toString();
+            return e.getMessage();
         }
 
         return "Success";
@@ -108,7 +108,7 @@ public class SpotifyController {
            Song song =  spotifyService.likeSong(mobile, songTitle);
         }
         catch(Exception e){
-            return e.toString();
+            return e.getMessage();
         }
 
         return "Success";
