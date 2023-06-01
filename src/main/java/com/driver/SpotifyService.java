@@ -9,8 +9,7 @@ public class SpotifyService {
 
     //Auto-wire will not work in this case, no need to change this and add autowire
 
-    SpotifyRepository spotifyRepository ;
-//            = new SpotifyRepository();
+    SpotifyRepository spotifyRepository = new SpotifyRepository();
 
     public User createUser(String name, String mobile){
         return spotifyRepository.createUser(name,mobile);
@@ -18,13 +17,13 @@ public class SpotifyService {
     }
 
     public Artist createArtist(String name) {
-        Artist artist = spotifyRepository.createArtist(name);
-        return artist;
+        return spotifyRepository.createArtist(name);
+
     }
 
     public Album createAlbum(String title, String artistName) {
-        Album album = spotifyRepository.createAlbum(title,artistName);
-        return album;
+        return spotifyRepository.createAlbum(title,artistName);
+
 
     }
 
