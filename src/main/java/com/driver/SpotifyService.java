@@ -12,14 +12,18 @@ public class SpotifyService {
     SpotifyRepository spotifyRepository = new SpotifyRepository();
 
     public User createUser(String name, String mobile){
+        return spotifyRepository.createUser(name,mobile);
 
     }
 
     public Artist createArtist(String name) {
-
+        Artist artist = spotifyRepository.createArtist(name);
+        return artist;
     }
 
     public Album createAlbum(String title, String artistName) {
+        Album album = spotifyRepository.createAlbum(title,artistName);
+        return album;
 
     }
 

@@ -38,12 +38,44 @@ public class SpotifyRepository {
     }
 
     public User createUser(String name, String mobile) {
+        User user = new User(name,mobile);
+        users.add(user);
+        userPlaylistMap.put(user,new ArrayList<>());
+        return user;
+
     }
 
     public Artist createArtist(String name) {
+        for(Artist ar : artists){
+            if(ar.equals(name)){
+                return ar;
+            }
+        }
+
+        Artist artist = new Artist(name);
+        artists.add(artist);
+        artistAlbumMap.put(artist,new ArrayList<>());
+        return artist;
     }
 
     public Album createAlbum(String title, String artistName) {
+        Artist artist = isArtistPresent(artistName);
+        Album album = new Album(title);
+        albums.add(album); // adding album into album list
+        artistAlbumMap.get(artist).add(album); // mapping artist with album
+
+        albumSongMap.put(album,new ArrayList<>()); // mapping album with list of songs
+
+        return album;
+    }
+
+    private Artist isArtistPresent(String artistName) {
+        for(Artist artist : artists){
+            if(artist.equals(artistName)){
+                return artist;
+            }
+        }
+        return new Artist(artistName);
     }
 
     public Song createSong(String title, String albumName, int length) throws Exception{
