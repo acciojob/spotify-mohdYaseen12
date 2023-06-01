@@ -243,8 +243,47 @@ public class SpotifyRepository {
             throw new Exception("Song does not exist");
         }
 
+        Album album = getAlbumOfSong(song);
+        Artist artist = getArtistOfAlbum(album);
 
+        int songLikes = 0;
+        int artistLikes = 0;
 
+        if(songLikeMap.containsKey(song)){
+            if(!songLikeMap.get(song).contains(user)){
+                songLikeMap.get(song).add(user);
+                songLikes = song.getLikes() + 1;
+                artistLikes = artist.getLikes() + 1;
+                song.setLikes(songLikes);
+                artist.setLikes(artistLikes);
+
+            }
+        }
+        else{
+            songLikeMap.put(song,new ArrayList<>());
+            songLikes = song.getLikes() + 1;
+            artistLikes = artist.getLikes() + 1;
+            song.setLikes(songLikes);
+            artist.setLikes(artistLikes);
+
+        }
+        return song;
+    }
+
+    private Artist getArtistOfAlbum(Album album) {
+        for(Artist artist : artistAlbumMap.keySet()){
+            if(artistAlbumMap.get(artist).contains(album))
+                return artist;
+        }
+        return null;
+    }
+
+    private Album getAlbumOfSong(Song song) {
+        for(Album album : albumSongMap.keySet()){
+            if(albumSongMap.get(album).contains(song))
+                return album;
+        }
+        return null;
     }
 
     private Song isSongPresent(String songTitle) {
@@ -256,9 +295,29 @@ public class SpotifyRepository {
     }
 
     public String mostPopularArtist() {
+        //Return the artist name with maximum likes
+        int maxLike = Integer.MIN_VALUE;
+        String name = "";
+        for(Artist artist : artists){
+            if(artist.getLikes() > maxLike){
+                name = artist.getName();
+                maxLike = artist.getLikes();
+            }
+        }
+        return name;
     }
 
     public String mostPopularSong() {
+        //return the song title with maximum likes
+        String songName = "";
+        int maxLike = Integer.MIN_VALUE;
+        for(Song song : songs){
+            if(song.getLikes() > maxLike){
+                maxLike = song.getLikes();
+                songName = song.getTitle();
+            }
+        }
+        return songName;
     }
 
     public List<Album> getAllALbum() {

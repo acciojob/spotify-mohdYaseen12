@@ -70,10 +70,12 @@ public class SpotifyService {
     }
 
     public String mostPopularArtist() {
+        return spotifyRepository.mostPopularArtist();
 
     }
 
     public String mostPopularSong() {
+        return spotifyRepository.mostPopularSong();
 
     }
 }
