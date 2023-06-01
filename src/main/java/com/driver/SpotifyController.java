@@ -2,6 +2,7 @@ package com.driver;
 
 import java.util.*;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -9,7 +10,9 @@ import org.springframework.web.bind.annotation.*;
 public class SpotifyController {
 
     //Autowire will not work in this case, no need to change this and add autowire
-    SpotifyService spotifyService = new SpotifyService();
+    @Autowired
+    SpotifyService spotifyService ;
+//            = new SpotifyService();
 
     @PostMapping("/add-user")
     public String createUser(@RequestParam(name = "name") String name, String mobile){
